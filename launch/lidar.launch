@@ -16,8 +16,11 @@
     <param name="samp_rate"    type="int"    value="4"/>
     <param name="frequency"    type="double" value="12"/>
   </node>
+  <!--
+  Add to rosbridge_websocket.launch
   <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
     	args="-0.1858 0.0 0 3.14 0.0  0.0 /base_link /laser_frame 40" />
+    -->
 
   <include file="$(find ydlidar)/launch/lidar_filter.launch"/>
 </launch>
