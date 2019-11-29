@@ -563,7 +563,7 @@ namespace ydlidar{
         std::atomic<bool>     isAutoconnting; ///< 是否正在自动连接中
 
 		enum {
-			DEFAULT_TIMEOUT 	= 2000,    /**< 默认超时时间. */ 
+			DEFAULT_TIMEOUT 	= 1000,    /**< 默认超时时间. */
 			DEFAULT_HEART_BEAT 	= 1000, /**< 默认检测掉电功能时间. */ 
 			MAX_SCAN_NODES 		= 3600,	   /**< 最大扫描点数. */ 
             DEFAULT_TIMEOUT_COUNT = 1,

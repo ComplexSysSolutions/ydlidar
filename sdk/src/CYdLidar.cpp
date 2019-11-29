@@ -1,8 +1,8 @@
 #include "CYdLidar.h"
 #include "common.h"
 #include <map>
-
-
+#include <string>
+#include <iostream>
 
 using namespace std;
 using namespace ydlidar;
@@ -275,6 +275,8 @@ bool CYdLidar::getDeviceInfo(int &type) {
 
 	device_info devinfo;
     result_t ans = lidarPtr->getDeviceInfo(devinfo);
+    //std::cout << std::to_string(devinfo.model);
+
     if (!IS_OK(ans)) {   
         ydlidar::console.error("get DeviceInfo Error" );
 		return false;
@@ -614,15 +616,19 @@ bool CYdLidar::checkStatus()
         }
         if(!getDeviceInfo(m_type)&&!ret) {
             checkmodel[m_SerialBaudrate] = true;
+
+            //std::cout <<"Tru";
             map<int,bool>::iterator it;
             for (it=checkmodel.begin(); it!=checkmodel.end(); ++it) {
+
                 if(it->second)
                     continue;
                 lidarPtr->disconnect();
                 delete lidarPtr;
                 lidarPtr = nullptr;
                 m_SerialBaudrate = it->first;
-
+                //std::cout << std::to_string(m_SerialBaudrate);
+                //m_SerialBaudrate =230400;
                 if (!checkCOMMs()) {
                     return false;
                 } else {
